@@ -13,12 +13,22 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          hola mamafackers soy briss .|.
-        </p>
-      </header>
+      <div className="container">
+        <br/>
+        <div className="jumbotron">
+          <h1 className="display-4">Enviar mensaje</h1>
+          <br/>
+          <input id ="nombre" className="form-control" placeholder="Nombre"/>
+          <br/>
+          <textarea id ="mensaje" className="form-control" placeholder="Su mensaje aquí">
+          </textarea>
+          <br/>
+          <button id="enviar" className="btn btn-success">Enviar</button>
+        </div>
+        <div id="mensajes">
+        
+        </div>
+      </div>
     </div>
   );
 }
