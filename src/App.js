@@ -10,8 +10,8 @@ function App() {
   const NODE_API_URL = "localhost:3002/";
   const [loggedIn, setLoggedIn] = useState(false);
   const room = "join_room"; // Reemplaza esto con el nombre de la sala adecuado
-  const [message, setMessage] = React.useState("");  
-  const [messageList, setMessageList] = React.useState([]);
+  const [message, setMessage] = React.useState("");  //declara una variable de estado llamada message utilizando el hook useState el valor inicial es una cadena vacia, alamacenara el mesnaje que se introduce o recibe
+  const [messageList, setMessageList] = React.useState([]); // se utiliza para alamcenar una lista de mensajes en algun componente de react, se puede actualizar agregando o eliminando elementos de esta lista utilizando la funcion setMessageList
   const userName = "nombre_de_usuario"; // Reemplaza "nombre_de_usuario" con el valor adecuado
 
   //For connection scoket.io  
@@ -28,17 +28,17 @@ function App() {
 
   //for sending message  
 const sendMessage = async () => {    
-  if (message === "") {    } 
-    else {      
+  if (message === "") {    } //verifica si el mensaje no esta vacio, si es asi no hace nada
+    else {      //si el mensaje no esta vacio crea un objeto messageContent que contiene informacion del mensaje
       let messageContent = {        
-        room: room,        
+        room: room,     //la sala  o el canal en el que se envia el mensaje    
         content: {          
-        author: userName,          
-        message: message,        
+        author: userName,  //el autor o el emitente del mensaje        
+        message: message,     // el contenido del mensaje en si   
       },      
     }; 
       
-    await socket.emit("send_message", messageContent);
+    await socket.emit("send_message", messageContent); //emite el mensaje utilizando un socket en el evento
     setMessageList([...messageList, messageContent.content]);
     setMessage("");    
   }  
